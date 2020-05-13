@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PolicyHandler{
+    @Autowired StudycafeRepository studycafeRepository;
     
     @StreamListener(KafkaProcessor.INPUT)
     public void wheneverReservationCanceled_Count(@Payload ReservationCanceled reservationCanceled){
