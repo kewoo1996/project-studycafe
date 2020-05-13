@@ -14,14 +14,16 @@ public class PolicyHandler{
     @StreamListener(KafkaProcessor.INPUT)
     public void wheneverReservationCanceled_Count(@Payload ReservationCanceled reservationCanceled){
 
+        //자리 취소
         if(reservationCanceled.isMe()){
-            System.out.println("##### listener Count : " + reservationCanceled.toJson());
+            //studycafeRepository.deleteByCustomerId(reservationCanceled.getCutomerId());
+            System.out.println("##### listener Count Delete : " + reservationCanceled.toJson());
         }
     }
-    @Autowired StudycafeRepository studycafeRepository;
+
     @StreamListener(KafkaProcessor.INPUT)
     public void wheneverPaid_Count(@Payload Paid paid){
-
+        //자리 등록
         if(paid.isMe()){
             Studycafe studycafe = new Studycafe();
             studycafe.setCustomerId(paid.getCustomerId());
@@ -29,5 +31,4 @@ public class PolicyHandler{
             System.out.println("##### listener Count : " + paid.toJson());
         }
     }
-
 }
