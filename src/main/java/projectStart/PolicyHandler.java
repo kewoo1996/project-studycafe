@@ -18,10 +18,14 @@ public class PolicyHandler{
             System.out.println("##### listener Count : " + reservationCanceled.toJson());
         }
     }
+    @Autowired StudycafeRepository studycafeRepository;
     @StreamListener(KafkaProcessor.INPUT)
     public void wheneverPaid_Count(@Payload Paid paid){
 
         if(paid.isMe()){
+            Studycafe studycafe = new Studycafe();
+            studycafe.setCustomerId(paid.getCustomerId());
+            studycafeRepository.save(studycafe);
             System.out.println("##### listener Count : " + paid.toJson());
         }
     }
