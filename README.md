@@ -139,6 +139,32 @@
 
 # 구현
 
+httpie, siege 툴 설치
+
+httpie접속 
+kubectl exec -it httpie bin/bash
+
+replicaset 개수 조정
+kubectl scale deploy nginx --replicas=3
+kubectl scale deploy payment --replicas=3
+
+pub/sub / cqrs
+http POST reservation:8080/reservations customerId=1111
+http payment:8080/payments
+http studycafe:8080/studycafes
+http reservation:8080/reservationViews
+
+kubectl get all
+
+토픽 리스트 보기
+kubectl -n kafka exec my-kafka-0 -- /usr/bin/kafka-topics --zookeeper my-kafka-zookeeper:2181 --list
+
+이벤트 수신하기
+kubectl -n kafka exec -ti my-kafka-0 -- /usr/bin/kafka-console-consumer --bootstrap-server my-kafka:9092 --topic projectStart --from-beginning
+
+
+
+
 분석/설계 단계에서 도출된 헥사고날 아키텍처에 따라, 각 BC별로 대변되는 마이크로 서비스들을 스프링부트와 파이선으로 구현하였다. 구현한 각 서비스를 로컬에서 실행하는 방법은 아래와 같다. (각자의 포트넘버는 8081 ~ 808n 이다)
 
 ```
