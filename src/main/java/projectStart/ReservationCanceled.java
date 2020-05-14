@@ -4,7 +4,7 @@ package projectStart;
 public class ReservationCanceled extends AbstractEvent {
 
     private Long id;
-    private Long cutomerId;
+    private Long customerId;
 
     public Long getId() {
         return id;
@@ -13,11 +13,11 @@ public class ReservationCanceled extends AbstractEvent {
     public void setId(Long id) {
         this.id = id;
     }
-    public Long getCutomerId() {
-        return cutomerId;
+    public Long getCustomerId() {
+        return customerId;
     }
 
-    public void setCutomerId(Long cutomerId) {
-        this.cutomerId = cutomerId;
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 }
