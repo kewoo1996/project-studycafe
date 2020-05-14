@@ -46,7 +46,4 @@ public class Studycafe {
         this.seatCount = seatCount;
     }
 
-
-
-
 }
